@@ -1,18 +1,18 @@
-import requestWeather as wdr
-import formatting as wi
-import mongoDBhandler as db
+from requestWeather import *
+from formatting import *
+from mongoDBhandler import *
 import pymongo
 
 def insertWeatherData(city):
     try: 
-        weatherJson = wdr.weather(city).weather_json()
+        weatherJson = weather(city).weather_json()
         #load json file from weatherDataRequest.py
 
-        weatherInstance = wi.weatherInstance(weatherJson)
-        instanceToBeInserted = weatherInstance.formattedInstance()
+        Instance = weatherInstance(weatherJson)
+        instanceToBeInserted = Instance.formattedInstance()
         #obtain stylized form by weatherInstance.py
 
-        weatherByCity = db.handler(27017,'weatherDatabase','weatherByCity')
+        weatherByCity = mdb(27017,'weatherDatabase','weatherByCity')
         #port:27017 
         #database name: weatherDatabase
         #collection: weatherByCity
@@ -38,11 +38,11 @@ def insertWeatherData(city):
 
 
 if __name__=="__main__":
-    #import sys
-    command='test'#sys.argv[1]
+    import sys
+    command=sys.argv[1]
 
     if (command=='test'):
-        weatherByCity = db.handler(27017,'weatherDatabase','weatherByCity')
+        weatherByCity = mdb(27017,'weatherDatabase','weatherByCity')
         weatherByCity.removeAll()
         print(insertWeatherData('springfield'))
         print(insertWeatherData('123'))

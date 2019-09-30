@@ -1,6 +1,6 @@
 import pymongo
 
-class handler:
+class mdb:
 
     def __init__(self,port,databaseName,collection):
         client =pymongo.MongoClient('localhost',port)

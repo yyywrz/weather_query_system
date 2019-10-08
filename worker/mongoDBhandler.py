@@ -29,7 +29,7 @@ class mdb:
         self.collection.insert_one(one)
 
 if __name__=="__main__":
-    mydb=handler(27017,'weatherDatabase','weatherByCity')
+    mydb=mdb(27017,'weatherDatabase','weatherByCity')
     for x in mydb.all():
         print(x)
 

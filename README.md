@@ -17,14 +17,14 @@ A handler to extract data from raw data (from 1) and reformat.
 <br>
 Inserction formatted data to database. There are three return values:
 <br>
-returnvalue| meanings
---|--
-`create`  | successful insert data into database
-`update`  | the data already existed, replace by latest one
-`illegal` | failed to insert/obtain data
+
+| return value        | meanings   | 
+| ------------- | ------------- | 
+| `create`      | successful insert data into database | 
+| `update`     | the data already existed, replace by latest one |
+| `illegal`    | failed to insert/obtain data |
+
 <br><br>
 **5. refresher.py**
 <br>
 A refresher that works every 30s to update all existing data.
-
-
